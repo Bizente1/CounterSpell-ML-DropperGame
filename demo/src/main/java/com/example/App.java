@@ -3,7 +3,6 @@ import javafx.scene.*;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 
 
 import java.io.IOException;

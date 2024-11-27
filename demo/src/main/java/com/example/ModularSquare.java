@@ -17,8 +17,8 @@ public class ModularSquare extends Rectangle {
         super();
         size = new Random().nextInt(4)+1;
         sideLength = chooseSize(size);
-        this.setLayoutX(xLoc);
-        this.setLayoutY(yLoc);
+        this.setX(xLoc);
+        this.setY(yLoc);
         this.setWidth(sideLength);
         this.setHeight(sideLength);
         shadowRectangle = new Rectangle(xLoc, yLoc, sideLength, sideLength);
@@ -48,7 +48,12 @@ public class ModularSquare extends Rectangle {
         if(this.isBeingDragged == false){
             yVel = yVel + .030;
             this.shadowRectangle.setLayoutY(this.getLayoutY()+ yVel);
-            CollisionSystem.checkBarrierCollision();
+            Barrier temp = CollisionSystem.checkBarrierCollision();
+            if(!(temp == null)){
+                this.shadowRectangle.setLayoutY(this.getY());
+            }else{
+                this.setLayoutY(this.shadowRectangle.getLayoutY());
+            }
         }else{ yVel = 0;}
     }
 
